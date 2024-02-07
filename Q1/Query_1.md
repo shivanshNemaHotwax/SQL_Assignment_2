@@ -31,7 +31,7 @@ oh.ORDER_TYPE_ID,
 oh.PRODUCT_STORE_ID
 from order_header as oh
 join order_item as oi on oh.order_id = oi.order_id
-join order_status as os on oi.order_id = os.order_id
+join order_status as os on oi.order_id = os.order_id AND oi.order_item_seq_id = os.order_item_seq_id AND oi.status_id = os.status_id
 join product as p on oi.product_id = p.product_id
 join product_type as pt on p.product_type_id = pt.product_type_id
 where oh.order_type_id ='SALES_ORDER' AND oh.product_store_id = 'SM_STORE' AND oi.status_id = 'ITEM_COMPLETED'
