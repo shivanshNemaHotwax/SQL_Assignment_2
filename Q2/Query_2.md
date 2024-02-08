@@ -20,10 +20,13 @@ oh.ORDER_NAME,
 rh.FROM_PARTY_ID, 
 rh.RETURN_DATE, 
 rh.ENTRY_DATE,
-rh.RETURN_CHANNEL_ENUM_ID from return_header as rh
+rh.RETURN_CHANNEL_ENUM_ID,
+ri.order_item_seq_id
+from return_header as rh
+
 join return_item as ri on rh.return_id = ri.return_id
 join order_header as oh on oh.order_id = ri.order_id
-join return_status as rs on rs.return_id = ri.return_id
+join return_status as rs on rs.return_id = ri.return_id AND ri.return_item_seq_id = rs.return_item_seq_id AND ri.status_id = rs.status_id
 where rh.status_id = 'RETURN_COMPLETED' AND oh.product_store_id = 'SM_STORE' AND rh.RETURN_CHANNEL_ENUM_ID='ECOM_RTN_CHANNEL';
 
 ```
