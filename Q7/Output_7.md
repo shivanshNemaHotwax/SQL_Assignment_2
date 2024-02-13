@@ -1,1 +1,1 @@
-![image](https://github.com/shivanshNemaHotwax/SQL_Assignment_2/assets/157474517/0c123663-89eb-464f-8211-5f5a4f1f1f21)
+![image](https://github.com/shivanshNemaHotwax/training_assignment/assets/157474517/f0ec1d12-ae7e-46ac-8b34-a1ff06e64d74)
