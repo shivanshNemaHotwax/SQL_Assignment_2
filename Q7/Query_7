@@ -7,5 +7,6 @@ FROM order_item as oi
 JOIN product as p ON p.product_id=oi.product_id
 JOIN product_type as pt ON pt.product_type_id=p.product_type_id
 JOIN order_header as oh ON oh.order_id=oi.order_id
-WHERE pt.is_physical='Y' AND oh.order_date>='2023-09-01 00:00:00.000' AND oh.order_date<'2023-10-01';
+Join order_status as os on os.order_id = oi.order_id and oi.order_item_seq_id = os.order_item_seq_id and os.status_id = oi.status_id
+WHERE pt.is_physical='Y' AND oh.order_date>='2023-09-01 00:00:00.000' AND oh.order_date<'2023-10-01' AND os.status_id = 'ITEM_COMPLETED';
 ```
