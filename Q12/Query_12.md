@@ -24,7 +24,8 @@ oh.ORDER_DATE,
 rh.RETURN_DATE,
 oh.PRODUCT_STORE_ID
 from return_adjustment as ra
-join return_header as rh on rh.return_id = ra.return_id
+join return_header as rh on rh.return_id = ra.return_id 
+AND rh.return_date between '2023-07-01' AND '2023-07-30'
 join order_header as oh on ra.order_id = oh.order_id
-where ra.return_adjustment_type_id = 'APPEASEMENT' AND rh.return_date between '2023-07-01' AND '2023-07-30';
+where ra.return_adjustment_type_id = 'APPEASEMENT';
 ```
