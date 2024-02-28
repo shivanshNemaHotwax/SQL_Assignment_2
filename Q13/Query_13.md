@@ -32,9 +32,13 @@ join order_item_ship_group_assoc as oisga on oisga.order_id = oi.order_id and oi
 join order_item_ship_group as oisg on oisg.order_id = oisga.order_id and oisga.ship_group_seq_id = oisg.ship_group_seq_id
 join product as p on p.product_id = oi.product_id
 join facility as f on oisg.facility_id = f.facility_id
-join order_status as os on os.order_id = oi.order_id and os.order_item_seq_id = oi.order_item_seq_id and os.status_id = oi.status_id
-join order_header as oh on oi.order_id = oh.order_id
-join order_history as ohi on ohi.order_id = oisga.order_id and ohi.order_item_seq_id = oisga.order_item_seq_id and ohi.ship_group_seq_id= oisga.ship_group_seq_id
-where oh.status_id = 'ORDER_COMPLETED' AND os.status_datetime between '2023-08-01' and '2023-08-30';
-
+join order_status as os on os.order_id = oi.order_id 
+and os.order_item_seq_id = oi.order_item_seq_id 
+and os.status_id = oi.status_id
+and os.status_datetime between '2023-08-01' and '2023-08-30'
+join order_header as oh on oi.order_id = oh.order_id 
+and oh.status_id = 'ORDER_COMPLETED'
+join order_history as ohi on ohi.order_id = oisga.order_id 
+and ohi.order_item_seq_id = oisga.order_item_seq_id 
+and ohi.ship_group_seq_id= oisga.ship_group_seq_id;
 ```
